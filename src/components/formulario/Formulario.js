@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import "./Formulario.css";
 
-function Formulario({ crearCita }) {
+function Formulario({ crearPersona }) {
   // Crear State de Citas
   const [formulario, guardarFormulario] = useState({
     nombre: "",
@@ -37,7 +37,7 @@ function Formulario({ crearCita }) {
         
 
         // Crear la cita
-        crearCita(formulario);
+        crearPersona(formulario);
 
         // Reiniciar el form
         guardarFormulario({

@@ -10,7 +10,7 @@ function App() {
 
   const [ingresar, guardarIngresar] = useState([]);
 
-
+  //funcion que muestra los resultados
   const consultarApi = () => {
     clienteAxios.get('/api/personas')
     
@@ -22,8 +22,8 @@ function App() {
         })
        
   }
-
-  const crearCita = (ingresar) => {
+  // funcion que agrega los registros
+  const crearPersona = (ingresar) => {
 
       clienteAxios.post('/api/personas', ingresar)
     
@@ -36,18 +36,25 @@ function App() {
         }) 
         
   }
+  // funcion que elimina los registros
+  const eliminarCita = id => {
+
+    clienteAxios.delete(`/api/personas/${id}`)
+  
+      .then(respuesta => {
+        consultarApi();
+        console.log('eliminado correctamente');
+      })
+      .catch(error => {
+        console.log(error)
+      }) 
+}
 
 
   useEffect(() => {
     consultarApi();
   }, []);
-
-    // Función que elimina una cita por su id
-    const eliminarCita = id => {
-      const nuevasCitas = ingresar.filter(formulario => formulario.id !== id );
-      guardarIngresar(nuevasCitas);
-    }
-   
+  
   return (
   
     
@@ -55,7 +62,7 @@ function App() {
       <Header />
         <div className="">
             <Formulario
-              crearCita={crearCita}
+              crearPersona={crearPersona}
             />
         </div>
         <div className="">    

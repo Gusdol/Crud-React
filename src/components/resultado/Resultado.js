@@ -34,6 +34,7 @@ function Resultado({ formulario, eliminarCita }) {
                           <button
                             href="!#"
                             className="waves-effect waves-light btn red accent-3"
+                            onClick={() => eliminarCita(add.id)}
                           >
                             <i className="tiny material-icons">delete</i>
                           </button>
