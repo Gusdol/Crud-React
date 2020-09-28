@@ -23,15 +23,24 @@ function App() {
        
   }
 
+  const crearCita = (ingresar) => {
+
+      clienteAxios.post('/api/personas', ingresar)
+    
+        .then(respuesta => {
+          consultarApi();
+          console.log('Creado exitoso');
+        })
+        .catch(error => {
+          console.log(error)
+        }) 
+        
+  }
+
+
   useEffect(() => {
     consultarApi();
   }, []);
-
-
-    // Función que tome las citas actuales y agregue la nueva
-    const crearCita = formulario => {
-      guardarIngresar([ ...ingresar, formulario ]);
-    }
 
     // Función que elimina una cita por su id
     const eliminarCita = id => {

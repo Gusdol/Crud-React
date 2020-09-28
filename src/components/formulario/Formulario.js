@@ -6,7 +6,7 @@ function Formulario({ crearCita }) {
   const [formulario, guardarFormulario] = useState({
     nombre: "",
     apellido: "",
-    cedula: "",
+    documento: "",
     telefono: "",
   });
 
@@ -19,14 +19,14 @@ function Formulario({ crearCita }) {
   };
 
   // Extraer los valores
-    const { nombre, apellido, cedula, telefono } = formulario;
+    const { nombre, apellido, documento, telefono } = formulario;
 
   // Cuando el usuario presiona agregar cita
     const submitCita = e => {
         e.preventDefault();
 
         // Validar
-        if(nombre.trim() === '' || apellido.trim() === ''  || cedula.trim() === ''  || telefono.trim() === '' ){
+        if(nombre.trim() === '' || apellido.trim() === ''  || documento.trim() === ''  || telefono.trim() === '' ){
             
             return;
         }
@@ -43,7 +43,7 @@ function Formulario({ crearCita }) {
         guardarFormulario({
             nombre: '',
             apellido: '',
-            cedula: '',
+            documento: '',
             telefono: ''
         })
 }
@@ -85,14 +85,14 @@ function Formulario({ crearCita }) {
             <div className="row">
               <div className="input-field col s12">
                 <input
-                  name="cedula"
-                  id="cedula"
+                  name="documento"
+                  id="documento"
                   type="text"
                   onChange={actualizarState}
                   className="validate"
-                  value={cedula}
+                  value={documento}
                 />
-                <label htmlFor="cedula">Cedula</label>
+                <label htmlFor="documento">Cedula</label>
               </div>
             </div>
             <div className="row">
