@@ -1,7 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import "./Formulario.css";
 
-function Formulario({ crearPersona }) {
+function Formulario({ crearPersona, editar, existeeditar, editarPersonaApi }) {
+
   // Crear State de Citas
   const [formulario, guardarFormulario] = useState({
     nombre: "",
@@ -17,6 +18,10 @@ function Formulario({ crearPersona }) {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    guardarFormulario(editar)
+  }, [editar])
 
   // Extraer los valores
     const { nombre, apellido, documento, telefono } = formulario;
@@ -37,8 +42,12 @@ function Formulario({ crearPersona }) {
         
 
         // Crear la cita
-        crearPersona(formulario);
-
+        if(existeeditar) {
+          editarPersonaApi(formulario)
+        } else {
+          crearPersona(formulario);
+        }
+      
         // Reiniciar el form
         guardarFormulario({
             nombre: '',
@@ -46,6 +55,16 @@ function Formulario({ crearPersona }) {
             documento: '',
             telefono: ''
         })
+      
+        let activo = document.querySelectorAll('label');
+        for( let activos of activo) {
+          activos.classList.remove('active');
+        }
+
+        let input = document.querySelectorAll('input');
+        for( let inputs of input) {
+          inputs.classList.remove('valid');
+        }
 }
 
 
@@ -109,12 +128,23 @@ function Formulario({ crearPersona }) {
               </div>
             </div>
             <div className="boton center-align">
-              <button
-                className="waves-effect waves-light btn-small"
-                type="submit"
-              >
-                Agregar
-              </button>
+              {
+              (existeeditar) 
+                ?
+                  <button
+                    className="waves-effect waves-light btn-small"
+                    type="submit"
+                  >
+                    Editar
+                  </button>
+                :
+                  <button
+                    className="waves-effect waves-light btn-small"
+                    type="submit"
+                  >
+                    Agregar
+                  </button>
+              }
             </div>
           </form>
         </div>

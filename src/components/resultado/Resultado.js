@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-function Resultado({ formulario, eliminarCita }) {
+function Resultado({ formulario, eliminarPersona, editarPersona }) {
   
   return (
     <Fragment>
@@ -27,14 +27,18 @@ function Resultado({ formulario, eliminarCita }) {
                         <td>{add.cedula}</td>
         
                         <td>
-                          <button href="!#" className="waves-effect waves-light btn">
+                          <button 
+                              href="!#" 
+                              className="waves-effect waves-light btn"
+                              onClick={ () => editarPersona(add)}
+                          >
                             <i className="tiny material-icons">create</i>
                           </button>
                           {"  "}
                           <button
                             href="!#"
                             className="waves-effect waves-light btn red accent-3"
-                            onClick={() => eliminarCita(add.id)}
+                            onClick={ () => eliminarPersona(add.id)}
                           >
                             <i className="tiny material-icons">delete</i>
                           </button>
