@@ -55,7 +55,8 @@ function Formulario({ crearPersona, editar, existeeditar, editarPersonaApi }) {
             documento: '',
             telefono: ''
         })
-      
+
+      // remueve las clases de los label y input para se vea como al comienzo el formulario
         let activo = document.querySelectorAll('label');
         for( let activos of activo) {
           activos.classList.remove('active');

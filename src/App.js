@@ -70,13 +70,14 @@ function App() {
     for( let inputs of input) {
       inputs.classList.add('valid');
     }
-        guardarEditar({
+         guardarEditar({
           id: ingresar.id,
           nombre: ingresar.nombre,
           apellido: ingresar.apellido,
           documento: ingresar.documento,
           telefono: ingresar.telefono
-        })
+        }) 
+
 
         guardarExisteEditar(true);
   }

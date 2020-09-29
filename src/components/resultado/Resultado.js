@@ -20,7 +20,7 @@ function Resultado({ formulario, eliminarPersona, editarPersona }) {
            
                 <tbody> 
                     {formulario.map(add => (
-                        <tr>
+                        <tr key={add.id}>
                         <td>{add.nombre}</td>
                         <td>{add.apellido}</td>
                         <td>{add.telefono}</td>
